@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - My Tasks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/Style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <div class="tasks-header-row">
+      <a href="home.html" style="text-decoration: none; font-size: 1.5rem; color: var(--text-dark);">←</a>
+      <h2>My Tasks</h2>
+    </div>
+
+    <div class="task-scroll-area">
+      <p class="task-group-title">Current Tasks</p>
+      <div id="dynamicCurrentTasks"></div>
+
+      <p class="task-group-title" style="margin-top: 24px;">Completed Tasks</p>
+      <div id="dynamicCompletedTasks"></div>
+    </div>
+
+    <a href="add-task.html" class="btn-primary" style="margin-top: 16px;">+ Add Task</a>
+    
+  </div>
+
+  <script src="../JS/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Focus Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/Style.css">
+  <style>
+    /* Styling to handle row alignment and delete button hover states */
+    .subject-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      cursor: pointer;
+      color: var(--text-dark);
+      border-bottom: 1px solid rgba(226,231,255,0.5);
+      transition: background 0.2s;
+    }
+    .subject-item-row:hover {
+      background: rgba(0, 71, 204, 0.04);
+    }
+    .delete-subject-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .delete-subject-btn:hover {
+      background: rgba(255, 59, 48, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <a href="home.html" class="back-arrow" style="text-decoration: none; font-size: 1.5rem; color: var(--text-dark); display: inline-block; margin-bottom: 16px;">←</a>
+    
+    <div class="timer-layout">
+      
+      <div class="dropdown-menu-box" style="position: relative;">
+        <div class="dropdown-header-bar" id="dropdownTrigger">
+          <span id="selectedSubjectLabel">Choose Study Subject</span>
+          <span class="dropdown-arrow" id="dropdownArrow">▼</span>
+        </div>
+        
+        <div class="dropdown-list-options" id="dropdownOptionsList" style="display: none; position: absolute; width: 100%; z-index: 100; max-height: 260px; overflow-y: auto; background: var(--card-bg); border: 1px solid #E2E7FF; border-radius: 8px; box-sizing: border-box;">
+          
+          <div style="display: flex; gap: 6px; padding: 10px; border-bottom: 2px dashed #E2E7FF; background: rgba(0,71,204,0.03);">
+            <input type="text" id="newSubjectInputField" placeholder="Add custom subject..." 
+                   style="flex: 1; padding: 6px 10px; border: 1px solid #E2E7FF; border-radius: 6px; font-family: var(--font-family); font-size: 0.85rem; background: var(--app-bg); color: var(--text-dark);">
+            <button type="button" id="addNewSubjectBtn" 
+                    style="background: var(--primary-blue); color: white; border: none; border-radius: 6px; padding: 6px 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+              ➕ Add
+            </button>
+          </div>
+
+          <div id="subjectsDynamicContainer"></div>
+          
+        </div>
+      </div>
+
+      <div class="stats-card" style="width: 100%; margin: 16px 0 24px 0; padding: 14px 16px; background-color: var(--card-bg); border-radius: var(--border-radius); box-sizing: border-box; text-align: left;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+          Set Session Duration
+        </label>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <input type="number" id="customMinutesInput" value="25" min="1" max="180" 
+                 style="width: 76px; padding: 8px; border: 2px solid #E2E7FF; border-radius: 8px; font-family: var(--font-family); font-weight: 600; color: var(--text-dark); background-color: transparent; text-align: center; font-size: 1rem;">
+          <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">Minutes</span>
+        </div>
+      </div>
+
+      <div class="circle-countdown-container">
+        <svg class="svg-progress-ring" width="220" height="220">
+          <circle class="progress-ring-bg-track" stroke-width="12" fill="transparent" r="95" cx="110" cy="110"/>
+          <circle class="progress-ring-fill-line" id="movingRingFill" stroke-width="12" fill="transparent" r="95" cx="110" cy="110"/>
+        </svg>
+        <div class="countdown-digits" id="timeTimerString">25:00</div>
+      </div>
+
+      <button class="btn-primary" id="timerControlActionBtn">Start Study</button>
+      
+    </div>
+  </div>
+
+  <script src="../JS/app.js"></script>
+</body>
+</html>

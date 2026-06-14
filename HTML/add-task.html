@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Create Task</title>
+  <link href="https://fonts.googleapis.com/css2 family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/Style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <a href="tasks.html" class="back-arrow">←</a>
+    
+    <div class="auth-container">
+      <h2 class="logo-text-sm" style="margin-bottom: 20px;">Add New Task</h2>
+      
+      <label class="input-group-label" style="font-size: 0.85rem; font-weight:500; color: var(--text-dark);">Category</label> <br>
+      <div class="category-chips-row">
+        <div class="chip-item selected" onclick="selectChip(this)">Study</div>
+        <div class="chip-item" onclick="selectChip(this)">Personal</div>
+        <div class="chip-item" onclick="selectChip(this)">Work</div>
+      </div>
+
+      <form id="createTaskForm" class="auth-form" style="margin-top: 0;">
+        <div class="input-group">
+          <label>Task Title</label>
+          <input type="text" placeholder="Enter task descriptive header..." required id="taskTitleInput">
+        </div>
+
+        <div class="input-group">
+          <label>Due Date</label>
+          <input type="date" required value="2026-05-25">
+        </div>
+
+        <div class="input-group">
+          <label>Assign Tag Color</label>
+          <div class="color-dots-picker">
+            <div class="color-dot-node selected" data-color="#FF5A5F" style="background-color: #FF5A5F;" onclick="selectColorDot(this)"></div>
+            <div class="color-dot-node" data-color="#FFB400" style="background-color: #FFB400;" onclick="selectColorDot(this)"></div>
+            <div class="color-dot-node" data-color="#00A699" style="background-color: #4F46E5;" onclick="selectColorDot(this)"></div>
+            <div class="color-dot-node" data-color="#008489" style ="background-color: #22C55E;" onclick="selectColorDot(this)"></div>
+            <div class="color-dot-node"  data-color="#38A1F3" style="background-color: #CB30E0;" onclick="selectColorDot(this)"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top: auto;">Save Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../JS/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Profile Settings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/Style.css">
+  <style>
+    /* Lightweight inline styling for the cropping modal overlay */
+    .avatar-modal-overlay {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .avatar-modal-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .preview-crop-box {
+      width: 160px;
+      height: 160px;
+      margin: 16px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px dashed var(--primary-blue);
+      position: relative;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #modalPreviewImage {
+      max-width: none; /* Crucial for dynamic scaling */
+      position: absolute;
+      transform-origin: center center;
+      transition: transform 0.05s linear;
+    }
+    .slider-control-group {
+      margin: 14px 0;
+      text-align: left;
+    }
+    .slider-control-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .slider-control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary-blue);
+    }
+    .modal-actions-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn-secondary {
+      background: #E2E7FF;
+      color: #0047CC;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      flex: 1;
+      font-size: 0.85rem;
+    }
+    /* Menu link row styles */
+    .profile-menu-row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 12px;
+      border-bottom: 1px solid #E2E7FF;
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+    .profile-menu-row-item:last-child {
+      border-bottom: none;
+    }
+    .profile-menu-row-item span {
+      font-weight: 500;
+    }
+    .chevron-right {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="tasks-header-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+      <a href="home.html" style="text-decoration: none; font-size: 1.5rem; color: var(--text-dark);">←</a>
+      <h2>Profile Settings</h2>
+    </div>
+
+    <div class="profile-main-summary" style="text-align: center; margin-bottom: 24px;">
+      <label for="avatarImageFileInput" style="cursor: pointer; position: relative; display: inline-block;">
+        <div class="profile-avatar-large" id="profileAvatarDisplay" style="width: 100px; height: 100px; border-radius: 50%; background-color: #E2E7FF; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto; overflow: hidden; position: relative; border: 2px solid var(--primary-blue);">
+          <span id="avatarDefaultEmoji" style="font-size: 2.5rem;">👤</span>
+        </div>
+        <div style="position: absolute; bottom: 8px; right: 0; background: var(--primary-blue); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; border: 2px solid var(--card-bg);">📷</div>
+      </label>
+
+      <input type="file" id="avatarImageFileInput" accept="image/*" style="display: none;">
+
+      <h3 id="profileMetaName" style="margin: 8px 0 2px 0; color: var(--text-dark);">Scholar</h3>
+      <p id="profileMetaEmail" style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">loading@university.edu</p>
+      
+      <button type="button" id="deleteAvatarBtn" style="background: transparent; border: none; color: #FF3B30; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; margin-top: 12px; cursor: pointer; display: none;">
+        🗑️ Remove Photo
+      </button>
+    </div>
+
+    <div class="profile-options-list" style="background: var(--card-bg); border-radius: var(--border-radius); padding: 8px; margin-bottom: 20px; box-sizing: border-box;">
+      
+      <div class="profile-menu-row-item">
+        <span>Dark Mode Theme</span>
+        <label class="toggle-switch-wrapper" style="position: relative; display: inline-block; width: 44px; height: 24px;">
+          <input type="checkbox" id="darkModeToggle" style="opacity: 0; width: 0; height: 0;">
+          <span class="slider-toggle-node" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .3s; border-radius: 24px;"></span>
+        </label>
+      </div>
+
+      <a href="progress.html" class="profile-menu-row-item">
+        <span>Weekly Progress Analytics</span>
+        <span class="chevron-right">➔</span>
+      </a>
+
+      <a href="login.html" class="profile-menu-row-item" style="color: #FF3B30;">
+        <span>Logout Account</span>
+        <span class="chevron-right" style="color: #FF3B30;">➔</span>
+      </a>
+
+    </div>
+
+    <div class="avatar-modal-overlay" id="avatarEditorModal">
+      <div class="avatar-modal-card">
+        <h3 style="margin-top:0; color: var(--text-dark);">Adjust Your Avatar Photo</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Drag inside the ring, zoom, or rotate to fit perfectly.</p>
+        
+        <div class="preview-crop-box" id="draggablePreviewRegion">
+          <img src="" id="modalPreviewImage" alt="Crop Target Preview">
+        </div>
+
+        <div class="slider-control-group">
+          <label>Zoom Scale</label>
+          <input type="range" id="zoomSliderRange" min="50" max="250" value="100">
+        </div>
+
+        <div class="slider-control-group">
+          <label>Rotation Control</label>
+          <input type="range" id="rotateSliderRange" min="0" max="360" value="0">
+        </div>
+
+        <div class="modal-actions-row">
+          <button type="button" class="btn-secondary" id="cancelCropBtn">Cancel</button>
+          <button type="button" class="btn-primary" id="saveCropBtn" style="flex:1; padding: 10px; font-size: 0.85rem;">Save Photo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../JS/app.js"></script>
+</body>
+</html>

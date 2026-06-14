@@ -1,0 +1,809 @@
+/* ==========================================
+   STUDYFLOW DESIGN SYSTEM & TOKENS
+   ========================================== */
+:root {
+  --bg-app: #A2B4FF;         /* Soft light-purple theme background */
+  --primary-blue: #0047CC;   /* Deep action blue for buttons */
+  --text-dark: #1A1A1A;      /* Bold headers and text */
+  --text-muted: #555555;     /* Smaller subtitles and labels */
+  --card-bg: #FFFFFF;        /* Crisp white for content blocks */
+  --border-radius: 16px;
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================
+   NEW: DARK THEME COLOR OVERRIDES 
+   ========================================== */
+.app-container.dark-theme {
+  --bg-app: #0D1B2A;         /* Dark midnight/blackish blue background */
+  --primary-blue: #3A86FF;   /* Vibrant electric blue for buttons in dark mode */
+  --text-dark: #F8F9FA;      /* Crisp off-white text */
+  --text-muted: #A0AAB2;     /* Soft grey-blue for secondary labels */
+  --card-bg: #1B263B;        /* Deep slate blue for cards and containers */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #f0f2f5; /* Desktop browser background environment */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Simulated Mobile Viewport - matches your Figma screen layouts */
+.app-container {
+  width: 375px;
+  height: 812px;
+  background-color: var(--bg-app);
+  border-radius: 32px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+/* ==========================================
+   REUSABLE BRANDING & UI COMPONENTS
+   ========================================== */
+.back-arrow {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+
+.logo-text {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* Buttons matching your primary blue design */
+.btn-primary {
+  display: block;
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  margin-top: auto; /* Pushes button beautifully to the bottom */
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0036A3;
+}
+
+/* Onboarding Layouts */
+.onboarding-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.onboarding-image {
+  width: 100%;
+  max-width: 280px; /* Limits the size neatly on mobile screen frames */
+  height: auto;
+  max-height: 200px;
+  object-fit: contain; /* Keeps the graphics aspect ratio crisp without stretching */
+  margin: 0 auto 24px auto;
+  display: block;
+}
+
+
+.logo-text-sm { font-size: 1.6rem; color: var(--text-dark); font-weight: 700; }
+.tagline-sm { font-size: 0.85rem; color: var(--text-dark); margin-bottom: 20px; }
+
+.illustration-box {
+  background: transparent !important; /* Forces the white box to vanish */
+  box-shadow: none !important;        /* Removes any shadow around the box */
+  border: none !important;
+  padding: 0;
+  width: 180px;
+  height: 180px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.onboarding-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.onboarding-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.dots-indicator {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.dot.active {
+  background-color: var(--primary-blue);
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* ==========================================
+   AUTH FORMS & INPUT FIELDS STYLING
+   ========================================== */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.auth-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.input-group input {
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-blue);
+}
+
+.forgot-link {
+  font-size: 0.85rem;
+  color: var(--primary-blue);
+  text-decoration: none;
+  align-self: flex-start;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 24px;
+}
+
+.auth-switch a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   CORE INNER APP & DASHBOARD STYLING
+   ========================================== */
+
+/* Dashboard Header Row */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.user-info h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.user-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.profile-avatar-mini {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FF7A00; /* Warm coral background color matching user avatar placeholders */
+  overflow: hidden;
+  border: 2px solid var(--card-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* White Modular Progress Cards */
+.stats-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.stats-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.time-stat {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.target-stat {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #E2E7FF;
+  border-radius: 4px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--primary-blue);
+  border-radius: 4px;
+}
+
+/* Section Controls */
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.section-title-row h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.see-all {
+  font-size: 0.85rem;
+  color: var(--primary-blue);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+
+/* Custom Mini Checklist Blocks */
+.home-task-list {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.task-item-static {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Simple visual check representation to match design state */
+.check-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--primary-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: white;
+  background-color: var(--primary-blue);
+}
+
+.check-icon.empty {
+  background-color: transparent;
+  border-color: #CCCCCC;
+}
+
+.task-item-static.completed {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* ==========================================
+   07 - TIMER SCREEN SPECIFIC STYLING
+   ========================================== */
+.timer-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* Custom Subjects Dropdown Container */
+.dropdown-menu-box {
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.dropdown-header-bar {
+  background-color: var(--card-bg);
+  padding: 14px 16px;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-list-options {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  overflow: hidden;
+  display: none; /* Controlled via app.js */
+}
+
+.dropdown-option-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  border-bottom: 1px solid #F0F2F5;
+  transition: background-color 0.15s;
+}
+
+.dropdown-option-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option-item:hover {
+  background-color: #E2E7FF;
+}
+
+/* Circular Pomodoro Clock Layout */
+.circle-countdown-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-progress-ring {
+  transform: rotate(-90deg); /* Starts progress from the absolute top center */
+  position: absolute;
+}
+
+.progress-ring-bg-track {
+  stroke: #E2E7FF;
+}
+
+.progress-ring-fill-line {
+  stroke: var(--primary-blue);
+  stroke-dasharray: 596.9; /* Total Circumference logic: 2 * Math.PI * 95 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.countdown-digits {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   08 & 09 - WORKFLOW & TASK STYLING
+   ========================================== */
+
+/* Internal Nav Alignment */
+.tasks-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tasks-header-row h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.task-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.task-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 16px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Wide Task Container Row Elements */
+.full-task-card {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: opacity 0.2s;
+}
+
+/* Custom Checkbox Design Override for a crisp Mobile App Feel */
+.task-checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.task-checkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark-box {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 2px solid var(--primary-blue);
+  border-radius: 6px;
+  display: inline-block;
+  margin-right: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.task-checkbox-wrapper input:checked ~ .checkmark-box {
+  background-color: var(--primary-blue);
+}
+
+.task-checkbox-wrapper input:checked ~ .checkmark-box::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-checkbox-wrapper input:checked ~ .task-label-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.completed-group {
+  opacity: 0.7;
+}
+
+/* Screen 09: Add Task Components */
+.category-chips-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chip-item {
+  background-color: var(--card-bg);
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.chip-item.selected {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+.color-dots-picker {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  padding: 4px 0;
+}
+
+.color-dot-node {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: transform 0.1s;
+}
+
+.color-dot-node.selected {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px var(--primary-blue);
+  transform: scale(1.1);
+}
+
+/* ==========================================
+   10 & 11 - ANALYTICS PROGRESS & PROFILE STYLING
+   ========================================== */
+
+/* Screen 10: Weekly Progress Bar Graph Layout */
+.chart-card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.graph-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 160px;
+  padding: 10px 10px 0 10px;
+  margin-top: 20px;
+  border-bottom: 2px solid #E2E7FF;
+}
+
+.graph-column-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 32px;
+}
+
+.bar-fill-vertical {
+  width: 100%;
+  background-color: #E2E7FF; /* Inactive day background color token */
+  border-radius: 6px 6px 0 0;
+  transition: height 0.5s ease, background-color 0.3s;
+  cursor: pointer;
+}
+
+.bar-fill-vertical.highlighted-day {
+  background-color: var(--primary-blue); /* Highlights heavy focus days */
+}
+
+.day-label-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Screen 11: Profile Layout Items */
+.profile-main-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0 28px 0;
+}
+
+.profile-avatar-large {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--primary-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  box-shadow: 0 8px 20px rgba(0, 71, 204, 0.2);
+  margin-bottom: 12px;
+}
+
+.profile-main-summary h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.profile-main-summary p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Profile List Menu links row panels */
+.profile-menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.profile-menu-row-item {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: transform 0.15s;
+}
+
+.profile-menu-row-item:hover {
+  transform: translateX(4px);
+}
+
+.chevron-right-indicator {
+  font-size: 0.85rem;
+  color: #BBBBBB;
+}
+
+/* Simple iOS style toggle switch component for settings options */
+.toggle-switch-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch-wrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-toggle-node {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #CCCCCC;
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.slider-toggle-node:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+.toggle-switch-wrapper input:checked + .slider-toggle-node {
+  background-color: var(--primary-blue);
+}
+
+.toggle-switch-wrapper input:checked + .slider-toggle-node:before {
+  transform: translateX(20px);
+}

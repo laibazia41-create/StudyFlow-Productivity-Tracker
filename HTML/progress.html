@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/Style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="tasks-header-row">
+      <a href="home.html" style="text-decoration: none; font-size: 1.5rem; color: var(--text-dark);">←</a>
+      <h2>Your Progress</h2>
+    </div>
+
+    <div class="stats-card" style="margin-bottom: 16px;">
+      <h3>Total Study Time This Week</h3>
+      <p class="time-stat" id="weeklyTotalHoursLabel">0h 0m <span class="target-stat">/ 24h</span></p>
+    </div>
+
+    <div class="chart-card">
+      <h4 style="font-size: 0.9rem; font-weight:600; color:var(--text-dark);">Weekly Activity Overview</h4>
+      
+      <div class="graph-container">
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical highlighted-day" id="MondayBarFill" style="height: 0%;"></div>
+          <span class="day-label-text">M</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 70%;"></div>
+          <span class="day-label-text">T</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 50%;"></div>
+          <span class="day-label-text">W</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 30%;"></div>
+          <span class="day-label-text">T</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 80%;"></div>
+          <span class="day-label-text">F</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 55%;"></div>
+          <span class="day-label-text">S</span>
+        </div>
+        <div class="graph-column-wrapper">
+          <div class="bar-fill-vertical" style="height: 15%;"></div>
+          <span class="day-label-text">S</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="profile.html" class="btn-primary" style="margin-top: auto;">View Account Settings</a>
+  </div>
+
+  <script src="../JS/app.js"></script>
+</body>
+</html>
